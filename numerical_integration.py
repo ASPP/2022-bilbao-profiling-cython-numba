@@ -1,4 +1,5 @@
 import argparse
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -24,12 +25,13 @@ def parse_arguments():
 
 
 def integrate(f, a, b, n):
-    s = 0.0
+    s = []
     for i in range(n):
         dx = (b - a) / n
         x = a + (i + 0.5) * dx
-        s += f(x) * dx
-    return s
+        y = f(x)
+        s = s + [y * dx]
+    return sum(s)
 
 
 def measure_integration_errors(n_max, a, b):
@@ -37,10 +39,10 @@ def measure_integration_errors(n_max, a, b):
     F = lambda x: 1 / 5 * x ** 5 - 3 / 2 * x ** 2
 
     errors = []
-    for n in range(1, n_max):
+    for n in range(1, n_max, 10):
         F_analytical = F(b) - F(a)
         F_numerical = integrate(f, a, b, n)
-        error = F_analytical - F_numerical
+        error = abs(F_analytical - F_numerical)
         errors = errors + [error]
     return errors
 
@@ -49,11 +51,11 @@ def plot_results(n_max, errors):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.set_xlim(1, n_max)
-    ax.set_ylim(1e-4, max(errors))
+    ax.set_ylim(1e-7, max(errors))
     ax.set_xlabel("Number of bins")
     ax.set_ylabel("Error")
     ax.set_yscale("log")
-    ax.plot(range(1, n_max), errors)
+    ax.plot(range(1, n_max, 10), errors)
     fig.savefig("numerical_integration_error.pdf")
 
 
