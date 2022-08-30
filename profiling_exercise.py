@@ -1,25 +1,3 @@
-# adding to string
-
-# adding to list
-
-# list comprehensions vs for loop?
-
-# permission vs forgivenes
-
-# lots of unnecessary function calls (pass aggregates rather than single values)
-
-# checking membership in list vs set
-
-# optimizing double if statement
-
-# preallocating lists
-
-# for i in range(len(iterable)) vs for item in iterable
-
-# import statements
-
-# not using builtins
-
 import collections
 import re
 
@@ -30,7 +8,6 @@ def read_file(fn):
         for l in f:
             for w in l.split():
                 words.append(w)
-                # words = words + [w]
     return words
 
 
@@ -47,14 +24,26 @@ def clean_words(words):
 
 
 def count_words(words):
-    counter = collections.defaultdict(int)
+    # counter = collections.defaultdict(int)
+    # for w in words:
+    #     counter[w] += 1
+    # return list(counter.items())
+    counter = []
     for w in words:
-        counter[w] += 1
-    return counter
+        found = False
+        for i in range(len(counter)):
+            if w == counter[i][0]:
+                counter[i][1] += 1
+                found = True
+                break
+        if not found:
+            counter.append([w, 1])
+    wc = [tuple(t) for t in counter]
+    return wc
 
 
 def sort_words_by_count(wc):
-    return sorted(wc.items(), key=lambda t: t[1], reverse=True)
+    return sorted(wc, key=lambda t: t[1], reverse=True)
 
 
 def save_word_count(wc):
@@ -64,7 +53,7 @@ def save_word_count(wc):
 
 
 def main():
-    words = read_file("./origin.txt")
+    words = read_file("./origin_chapter1.txt")
     words = clean_words(words)
     wc = count_words(words)
     wc = sort_words_by_count(wc)
@@ -72,5 +61,5 @@ def main():
 
 
 if __name__ == "__main__":
-    for _ in range(20):
+    for _ in range(10):
         main()
