@@ -1,4 +1,5 @@
 import collections
+import operator
 import re
 
 
@@ -43,7 +44,7 @@ def count_words(words):
 
 
 def sort_words_by_count(wc):
-    return sorted(wc, key=lambda t: t[1], reverse=True)
+    return sorted(wc, key=operator.itemgetter(1), reverse=True)
 
 
 def save_word_count(wc):
