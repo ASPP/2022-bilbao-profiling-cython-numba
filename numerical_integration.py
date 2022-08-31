@@ -34,10 +34,7 @@ def integrate(f, a, b, n):
     return sum(s)
 
 
-def measure_integration_errors(n_max, a, b):
-    f = lambda x: x ** 4 - 3 * x
-    F = lambda x: 1 / 5 * x ** 5 - 3 / 2 * x ** 2
-
+def measure_integration_errors(f, F, n_max, a, b):
     errors = []
     for n in range(1, n_max, 10):
         F_analytical = F(b) - F(a)
@@ -53,7 +50,7 @@ def plot_results(n_max, errors):
     ax.set_xlim(1, n_max)
     ax.set_ylim(1e-7, max(errors))
     ax.set_xlabel("Number of bins")
-    ax.set_ylabel("Error")
+    ax.set_ylabel("Absolute error")
     ax.set_yscale("log")
     ax.plot(range(1, n_max, 10), errors)
     fig.savefig("numerical_integration_error.pdf")
@@ -61,7 +58,14 @@ def plot_results(n_max, errors):
 
 def main():
     args = parse_arguments()
-    errors = measure_integration_errors(args.n_max, args.a, args.b)
+
+    def f(x):
+        return x ** 4 - 3 * x
+
+    def F(x):
+        return 1 / 5 * x ** 5 - 3 / 2 * x ** 2
+
+    errors = measure_integration_errors(f, F, args.n_max, args.a, args.b)
     plot_results(args.n_max, errors)
 
 
