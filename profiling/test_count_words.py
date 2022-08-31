@@ -1,4 +1,4 @@
-from profiling_exercise import clean_words, count_words, sort_words_by_count
+from count_words import clean_words, count_words, sort_words_by_count
 
 
 def test_clean_words():
