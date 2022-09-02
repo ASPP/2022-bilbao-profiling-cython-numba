@@ -1,4 +1,6 @@
-project('integrate_f6', 'cython')
+project('integrate_f6', 'cython',
+        version : '0',
+        license : 'BSD0')
 
 # For documentation, see:
 # https://mesonbuild.com/Python-module.html
@@ -10,4 +12,5 @@ py.extension_module(
   'integrate_f6',
   'integrate_f6.pyx',
   dependencies : py.dependency(),
+  install : true,
 )
