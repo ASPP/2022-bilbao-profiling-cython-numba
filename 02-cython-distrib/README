@@ -8,10 +8,20 @@ The other files are "metadata":
 - meson.build
 - setup.py
 
-The "new" way is to use pip:
-  pip wheel .
+Exercise: install the module so that it can be imported:
+  cd /
+  python -c 'import integrate_f6; print(integrate_f6)'
 
+--
+
+The "new" way is to use pip:
+  pip install --user .
+
+To just build a distributable bundle:
+  pip wheel .
 This creates a binary "wheel" (zip archive) in dist/ .
+
+--
 
 The "old" way is to use setup.py:
   python setup.py build

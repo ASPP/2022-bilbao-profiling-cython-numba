@@ -10,15 +10,14 @@ def parse_arguments():
     )
     parser.add_argument(
         "n_max",
-        metavar="n_max",
         type=int,
         help="maximal number of bins to use for integration",
     )
     parser.add_argument(
-        "a", metavar="a", type=float, help="lower bound for integration"
+        "a", type=float, help="lower bound for integration"
     )
     parser.add_argument(
-        "b", metavar="b", type=float, help="upper bound for integration"
+        "b", type=float, help="upper bound for integration"
     )
 
     return parser.parse_args()
