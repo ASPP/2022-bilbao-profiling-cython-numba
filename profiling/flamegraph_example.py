@@ -2,16 +2,22 @@ import time
 
 
 def function_a():
-    time.sleep(0.2)
+    r = 0
+    for i in range(10_000_000):
+        r += i
     function_b()
 
 
 def function_b():
-    time.sleep(0.8)
+    r = 0
+    for i in range(20_000_000):
+        r += i
 
 
 def function_c():
-    time.sleep(0.4)
+    r = 0
+    for i in range(5_000_000):
+        r += i
 
 
 if __name__ == "__main__":
