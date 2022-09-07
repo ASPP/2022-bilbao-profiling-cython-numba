@@ -9,15 +9,13 @@ def parse_arguments():
         description="Measure error of numerical intergration."
     )
     parser.add_argument(
-        "n_max",
-        type=int,
-        help="maximal number of bins to use for integration",
+        "n_max", type=int, help="maximal number of bins to use for integration",
     )
     parser.add_argument(
-        "a", type=float, help="lower bound for integration"
+        "a", type=float, help="lower bound for integration",
     )
     parser.add_argument(
-        "b", type=float, help="upper bound for integration"
+        "b", type=float, help="upper bound for integration",
     )
 
     return parser.parse_args()
