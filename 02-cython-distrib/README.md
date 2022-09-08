@@ -9,12 +9,19 @@ The other files are "metadata":
 - [meson.build](02-cython-distrib/meson.build)
 - [setup.py](02-cython-distrib/setup.py)
 
-Exercise: install the module so that it can be imported from anywhere:
+Exercise:
+    0) have a look at the different files
+    1) install the module
+    2) make sure it can be imported from anywhere:
 
     cd /
     python -c 'import integrate_f6; print(integrate_f6)'
+    
+    3) call the `integrate_f6` function from the Python interpreter after importing the module
 
 --
+
+How to install:
 
 The "new" way is to use `pip`:
 
@@ -37,9 +44,6 @@ or
     python setup.py build_ext --inplace
 
 to compile the code.
-
-Load the resulting module in the python interpreter.
-Call the `integrate_f6()` function.
 
 --
 
