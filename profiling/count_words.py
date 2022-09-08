@@ -25,10 +25,6 @@ def clean_words(words):
 
 
 def count_words(words):
-    # counter = collections.defaultdict(int)
-    # for w in words:
-    #     counter[w] += 1
-    # return list(counter.items())
     counter = []
     for w in words:
         found = False
